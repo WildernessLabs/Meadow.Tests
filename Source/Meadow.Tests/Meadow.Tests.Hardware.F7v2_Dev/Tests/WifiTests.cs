@@ -30,7 +30,20 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
 
         }
 
-        public async Task RunTests()
+        public async Task RunBasicHardwareTests()
+        {
+            NetworkConnectTest();
+            SslRequestTest();
+        }
+
+        public async Task RunAllTests()
+        {
+            await NetworkScanTest();
+            await NetworkConnectTest();
+            await SslRequestTest();
+        }
+
+        protected async Task<bool> NetworkScanTest()
         {
             bool success = true;
 
@@ -41,6 +54,13 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
                 success = false;
                 Console.WriteLine($"Test failed: Err while scanning wifi networks: {e.Message}");
             }
+
+            return success;
+        }
+
+        protected async Task<bool> NetworkConnectTest()
+        {
+            bool success = true;
 
             //---- network connnection
             try {
@@ -58,6 +78,13 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
                 Console.WriteLine($"Test failed: Err while connecting to network: {e.Message}");
             }
 
+            return success;
+        }
+
+        protected async Task<bool> SslRequestTest()
+        {
+            bool success = true;
+
             //---- SSL request
             try {
                 GetWebPageViaHttpClient("https://postman-echo.com/get?foo1=bar1&foo2=bar2").Wait();
@@ -66,6 +93,8 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
                 success = false;
                 Console.WriteLine($"Test failed: Err while retreiving webpage: {e.Message}");
             }
+
+            return success;
         }
 
         protected void ScanForAccessPoints()
