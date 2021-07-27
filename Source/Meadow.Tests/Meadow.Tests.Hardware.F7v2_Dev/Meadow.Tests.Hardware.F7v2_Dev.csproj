@@ -1,0 +1,27 @@
+<Project Sdk="Meadow.Sdk/1.1.0">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>App</AssemblyName>
+    <nullable>enable</nullable>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Meadow.Foundation" Version="0.*" />
+    <PackageReference Include="Meadow.F7" Version="0.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ServiceAccess\" />
+    <None Remove="Tests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ServiceAccess\" />
+    <Folder Include="Tests\" />
+  </ItemGroup>
+</Project>
