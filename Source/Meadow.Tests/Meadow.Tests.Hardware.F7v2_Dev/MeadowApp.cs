@@ -17,6 +17,9 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
         {
             Initialize();
 
+            //---- wifi
+            Tests.WifiTests.Instance.RunTests().Wait();
+
             //---- antenna switch tests
             Tests.AntennaSwitchTests.Instance.RunTests();
         }

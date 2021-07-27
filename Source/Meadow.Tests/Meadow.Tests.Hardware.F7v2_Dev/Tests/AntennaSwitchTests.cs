@@ -36,28 +36,37 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
 
         public void RunTests()
         {
-            Console.WriteLine("Running antenna switc test.");
+            try {
+                Console.WriteLine("Running antenna switch test.");
 
-            // set the antenna to onboard, don't persist the change on reboot
-            Console.WriteLine("Setting to onboard antenna.");
-            Device.SetAntenna(Gateways.AntennaType.OnBoard, persist: false);
+                // set the antenna to onboard, don't persist the change on reboot
+                Console.WriteLine("Setting to onboard antenna.");
+                Device.SetAntenna(Gateways.AntennaType.OnBoard, persist: false);
 
-            // get the networks
-            Console.WriteLine("Scanning for networks.");
-            var onboardAntennaNetworks = Device.WiFiAdapter.Scan();
-            Console.WriteLine($"Found {onboardAntennaNetworks.Count} networks.");
+                // get the networks
+                Console.WriteLine("Scanning for networks.");
+                var onboardAntennaNetworks = Device.WiFiAdapter.Scan();
+                Console.WriteLine($"Found {onboardAntennaNetworks.Count} networks.");
 
-            // switch to the external antenna
-            Console.WriteLine("Setting to external antenna.");
-            Device.SetAntenna(Gateways.AntennaType.External, persist: false);
+                // switch to the external antenna
+                Console.WriteLine("Setting to external antenna.");
+                Device.SetAntenna(Gateways.AntennaType.External, persist: false);
 
-            // get the networks again
-            Console.WriteLine("Scanning for networks.");
-            var externalAntennaNetworks = Device.WiFiAdapter.Scan();
-            Console.WriteLine($"Found {onboardAntennaNetworks.Count} networks.");
+                // get the networks again
+                Console.WriteLine("Scanning for networks.");
+                var externalAntennaNetworks = Device.WiFiAdapter.Scan();
+                Console.WriteLine($"Found {onboardAntennaNetworks.Count} networks.");
 
-            // validate them
-            bool success = ValidateNetworkChange(onboardAntennaNetworks, externalAntennaNetworks);
+                // validate them
+                bool success = ValidateNetworkChange(onboardAntennaNetworks, externalAntennaNetworks);
+
+                // switch back to the onboard
+                Console.WriteLine("Setting to onboard antenna.");
+                Device.SetAntenna(Gateways.AntennaType.OnBoard, persist: false);
+
+            } catch (Exception e) {
+                Console.WriteLine($"Antenna switch failed: {e.Message}");
+            }
         }
 
         /// <summary>
