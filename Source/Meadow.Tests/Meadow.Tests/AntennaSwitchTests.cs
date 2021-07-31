@@ -10,12 +10,8 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
     /// the antenna can be switched, and if it can, the network quality is significantly
     /// worse with the external antenna.
     /// </summary>
-    public class AntennaSwitchTests
+    public class AntennaSwitchTests : TestsBase
     {
-        //==== convenience
-        // TODO: need to consider adding the wifi stuff to `IF7MeadowDevice` in Meadow.Core
-        protected F7Micro Device => MeadowApp.Device;
-
         //==== singleton stuff
         private static readonly Lazy<AntennaSwitchTests> instance =
             new Lazy<AntennaSwitchTests>(() => new AntennaSwitchTests());
@@ -23,7 +19,7 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
             get { return instance.Value; }
         }
 
-        protected AntennaSwitchTests()
+        protected AntennaSwitchTests() : base()
         {
             Initialize();
         }

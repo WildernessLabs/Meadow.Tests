@@ -9,7 +9,7 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
 {
     // To be run on the AISU board
 
-    public class MeadowApp : App<F7Micro, MeadowApp>
+    public class MeadowApp : App<F7MicroV2, MeadowApp>
     {
         RgbPwmLed onboardLed;
 
@@ -17,11 +17,13 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
         {
             Initialize();
 
+            Globals globals = new Globals(Device);
+
             //---- wifi
-            Tests.WifiTests.Instance.RunBasicHardwareTests().Wait();
+            WifiTests.Instance.RunBasicHardwareTests().Wait();
 
             //---- antenna switch tests
-            Tests.AntennaSwitchTests.Instance.RunTests();
+            AntennaSwitchTests.Instance.RunTests();
         }
 
         void Initialize()
@@ -37,8 +39,8 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
                 Meadow.Peripherals.Leds.IRgbLed.CommonType.CommonAnode);
 
             //---- wifi adapter
-            if (!Device.InitWiFiAdapter().Result) {
-                throw new Exception("Could not initialize the WiFi adapter.");
+            if (!Device.InitCoprocessor().Result) {
+                throw new Exception("Could not initialize the coprocessor.");
             }
         }
 

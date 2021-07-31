@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meadow.F7", "..\..\..\Meado
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meadow.Foundation.Core", "..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Core\Meadow.Foundation.Core.csproj", "{BB1D71EC-4B19-4032-A7B2-7BC1B79197FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meadow.Tests", "Meadow.Tests\Meadow.Tests.csproj", "{2211C877-C000-40E6-9178-2C841E70849E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{BB1D71EC-4B19-4032-A7B2-7BC1B79197FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB1D71EC-4B19-4032-A7B2-7BC1B79197FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB1D71EC-4B19-4032-A7B2-7BC1B79197FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2211C877-C000-40E6-9178-2C841E70849E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2211C877-C000-40E6-9178-2C841E70849E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2211C877-C000-40E6-9178-2C841E70849E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2211C877-C000-40E6-9178-2C841E70849E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

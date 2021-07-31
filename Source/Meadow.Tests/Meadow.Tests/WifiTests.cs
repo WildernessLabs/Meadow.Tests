@@ -4,13 +4,10 @@ using System.Threading.Tasks;
 using Meadow.Devices;
 using Meadow.Gateway.WiFi;
 
-namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
+namespace Meadow.Tests
 {
-    public class WifiTests
+    public class WifiTests : TestsBase
     {
-        //==== convenience
-        // TODO: need to consider adding the wifi stuff to `IF7MeadowDevice` in Meadow.Core
-        protected F7Micro Device => MeadowApp.Device;
 
         //==== singleton stuff
         private static readonly Lazy<WifiTests> instance =
@@ -19,7 +16,7 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
             get { return instance.Value; }
         }
 
-        protected WifiTests()
+        protected WifiTests() : base()
         {
             Initialize();
         }
@@ -27,13 +24,12 @@ namespace Meadow.Tests.Hardware.F7v2_Dev.Tests
         protected void Initialize()
         {
             Console.WriteLine("Initialize hardware...");
-
         }
 
         public async Task RunBasicHardwareTests()
         {
-            NetworkConnectTest();
-            SslRequestTest();
+            await NetworkConnectTest();
+            await SslRequestTest();
         }
 
         public async Task RunAllTests()

@@ -14,14 +14,13 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="ServiceAccess\" />
-    <None Remove="Tests\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ServiceAccess\" />
-    <Folder Include="Tests\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Meadow.Core\source\Meadow.F7\Meadow.F7.csproj" />
     <ProjectReference Include="..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Core\Meadow.Foundation.Core.csproj" />
+    <ProjectReference Include="..\Meadow.Tests\Meadow.Tests.csproj" />
   </ItemGroup>
 </Project>
